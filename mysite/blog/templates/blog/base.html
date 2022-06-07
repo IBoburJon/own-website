@@ -1,0 +1,212 @@
+{% load i18n %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="{% static 'blog/style.css' %}">
+	<link rel="stylesheet" href="{% static 'blog/slick.css' %}">
+ 
+
+	<title>I_BoburJon</title>
+</head>
+<body>
+	<!-- Navigation -->
+	<nav class="site-navigation">
+		<div class="site-navigation-inner site-container">
+			<img src="{% static 'blog/images/IB_Logo.png' %}" height="">
+		</div>
+	</nav>
+	<!-- Navigation end -->
+
+	<!-- Top banner -->
+	<section class="fh5co-top-banner">
+		<div class="top-banner__inner site-container">
+			<div class="top-banner__image">
+				<img src="{% static 'blog/images/me.jpg' %}">
+			</div>
+			<div class="top-banner__text">
+				<div class="top-banner__text-up">
+					<span class="brand-span">Hello! I'm</span>
+					<h2 class="top-banner__h2">BoburJon</h2>
+				</div>
+				<div class="top-banner__text-down">
+					<h2 class="top-banner__h2">Iskandarov</h2>
+					<span class="brand-span"> Software Engineer, Traveler and etc.</span>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Top banner end -->
+
+	<!-- About me -->
+	<section class="fh5co-about-me">
+		<div class="about-me-inner site-container">
+			<article class="portfolio-wrapper">
+				<div class="portfolio__img">
+					<img src="{% static 'blog/images/about_me.jpg' %}" class="about-me__profile" alt="about me profile picture">
+				</div>
+				<div class="portfolio__bottom">
+					<div class="portfolio__name">
+						<span>I</span>
+						<h2 class="universal-h2">BoburJon</h2>
+					</div>
+					<p>Boburjon Iskandarov is a person which works Smarter not Harder.</p>
+				</div>
+			</article>
+			<div class="about-me__text">
+                <h2 class="universal-h2 universal-h2-bckg">About me</h2>
+				<div class="about-me-slider">
+					<div class="about-me-single-slide">
+						<p><span>I</span> 'm an experienced software engineer who constantly seeks out innovative solutions to everyday problems. In my two years in this industry, I've honed my analytical thinking and collaboration skills, and I love working with a team. I've also had the opportunity to serve as the software engineer lead for three projects with First Technology.</p>
+						<h4>Software Engineer</h4>
+					</div>
+					<div class="about-me-single-slide">
+						<p><span>I</span> love to travel. My biggest passion is traveling the world and experiencing new adventures and cultures. I live for it. I live in Tashkent Uzbekistan, but most years I manage to get one month off from my job to travel the world and write about what I see, hear, feel and do. Then I go back to work with my heart full and start saving and planning for my next adventure to a new destination. Sometimes, I find destinations that I just cannot get enough of, and then I have to return there to learn and experience even more. Some of the countries I have been to are United States of America and Dubai.</p>
+						<h4>Traveler</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="about-me-bckg"></div>
+	</section>
+	<!-- About me end -->
+
+	<!-- Counter -->
+	<div class="fh5co-counter counters">
+		<div class="counter-inner site-container">
+			<div class="single-count">
+				<span class="count" data-count="7">0</span>
+				<div class="single-count__text">
+					<img src="{% static 'blog/images/p_icon.png' %}" width="22" height="22" alt="counter icon">
+					<p>Projects</p>
+				</div>
+			</div>
+			<div class="single-count">
+				<span class="count" data-count="0">0</span>
+				<div class="single-count__text">
+					<img src="{% static 'blog/images/a_icon.png' %}" alt="counter icon">
+					<p>Awards</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Counter -->
+	
+    <!-- Blog -->
+	<section class="fh5co-blog">
+		<div class="site-container">
+			<h2 class="universal-h2 universal-h2-bckg">My Blog</h2>
+			<div class="blog-slider blog-inner">
+				{% block content %}
+                {% endblock %}
+			</div>
+		</div>
+	</section>
+	<!-- Blog end -->
+
+	<!-- Comments -->
+	<section class="fh5co-quotes">
+		
+			<div class="site-container">
+				<h2 class="universal-h2 universal-h2-bckg">What People Are Saying About WebSite</h2>
+				<div class="about-me-slider">
+				{% for comment in comments %}
+					<div>
+						<p>{{ comment.body }}</p>
+						<h4>{{ comment.name }}</h4>
+						<p>Viewer</p>
+					</div>
+				{% endfor %}
+				</div>	
+				<div class="footer-contact-form1">
+					<h2>Add your Comment</h2>
+					<form class="contact-form" method="POST" action="{% url 'blog:post_list' %}">
+						{% csrf_token %}
+						<div class="contact-form__input">
+							<input type="text" name="name" placeholder="Name">
+						</div>
+						<textarea name="body"></textarea>
+						<input type="submit" name="submit" value="Submit" class="submit-button">
+					</form>
+				</div>		
+			</div>
+		
+		
+	</section>
+	<!-- Comments end -->
+
+	<!-- Social -->
+	<section class="fh5co-social">
+		<div class="site-container">
+			<div class="social">
+				<h5>Follow me!!</h5>
+				<div class="social-icons">
+					<a href="https://t.me/I_BoburJon" target="_blank"><img src="{% static 'blog/images/tg.png' %}" height="22px" width="25px" alt="social icon"></a>
+					<a href="https://www.instagram.com/i_boburj0n" target="_blank"><img src="{% static 'blog/images/insta.png' %}" height="25px" width="35px" alt="social icon"></a>
+					<a href="https://www.youtube.com/channel/UCi5wsMLTULWD1xslHJIAEqA" target="_blank"><img src="{% static 'blog/images/social-youtube.png' %}" alt="social icon"></a>
+					<a href="https://www.facebook.com/profile.php?id=100007893078906" target="_blank"><img src="{% static 'blog/images/FaceBook.png' %}" height="22px" width="25px" alt="social icon"></a>
+				</div>
+				<h5>Share it!</h5>
+			</div>
+		</div>
+	</section>
+	<!-- Social -->
+
+	<!-- Footer -->
+	<footer class="site-footer">
+		<div class="site-container">
+			<div class="footer-inner">
+				<div class="footer-info">
+					<div class="footer-info__left">
+						<img src="{% static 'blog/images/git.jpg' %}" height="165" width="250" alt="about me image">
+					</div>
+					<div class="footer-info__right">
+						<h5>Get In Touch</h5>
+						<p class="footer-phone">Phone: +998 90 911 6335</p>
+						<p>Email : iskandarov.boburjon@gmail.com</p>
+						<div class="social-icons">
+							<a href="https://t.me/I_BoburJon" target="_blank"><img src="{% static 'blog/images/tg.png' %}" height="22px" width="25px" alt="social icon"></a>
+							<a href="https://www.instagram.com/i_boburj0n" target="_blank"><img src="{% static 'blog/images/insta.png' %}" height="25px" width="35px" alt="social icon"></a>
+							<a href="https://www.youtube.com/channel/UCi5wsMLTULWD1xslHJIAEqA" target="_blank"><img src="{% static 'blog/images/social-youtube.png' %}"></a>
+							<a href="https://www.facebook.com/profile.php?id=100007893078906" target="_blank"><img src="{% static 'blog/images/FaceBook.png' %}" height="22px" width="25px" alt="social icon"></a>
+						</div>
+					</div>
+				</div>
+				<div class="footer-contact-form">
+					<h5>Contact Form</h5>
+					<form class="contact-form">
+						<div class="contact-form__input">
+							<input type="text" name="name" placeholder="Name">
+							<input type="email" name="email" placeholder="Email">
+						</div>
+						<textarea></textarea>
+						<input type="submit" name="submit" value="Submit" class="submit-button">
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="site-container footer-bottom-inner">
+				<p>© 2021 Blog | Designed by I_BoburJon | All rights Reserved.</p>
+				<div class="footer-bottom__img">
+					<img src="{% static 'blog/images/footer-mastercard.png' %}" alt="footer image">
+					<img src="{% static 'blog/images/footer-paypal.png' %}" alt="footer image">
+					<img src="{% static 'blog/images/footer-visa.png' %}" alt="footer image">
+					<img src="{% static 'blog/images/footer-fedex.png' %}" alt="footer image">
+					<img src="{% static 'blog/images/footer-dhl.png' %}" alt="footer image">
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer end -->
+
+	<!-- Scripts -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+
+</body>
+</html>
